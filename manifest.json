@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "id": "reva.animequote",
+  "name": "Anime Quote of the Day",
+  "version": "1.0.0",
+  "author": "reva",
+  "license": "MIT",
+  "description": "One anime quote a day with the character's picture, announced once a day as a notification",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "AnimeQuote.qml"
+  },
+  "barWidget": {
+    "displayName": "Anime Quote of the Day",
+    "description": "Today's character in the bar; click for the quote, or roll a random one",
+    "category": "Fun",
+    "allowMultiple": false,
+    "defaultSection": "center",
+    "defaults": {
+      "showName": false,
+      "notify": true,
+      "maxLabelWidth": 140
+    },
+    "schema": [
+      {
+        "key": "showName",
+        "type": "boolean",
+        "label": "Show character name"
+      },
+      {
+        "key": "notify",
+        "type": "boolean",
+        "label": "Announce the quote once a day"
+      },
+      {
+        "key": "maxLabelWidth",
+        "type": "number",
+        "label": "Max name width"
+      }
+    ]
+  }
+}
