@@ -29,26 +29,62 @@ omarchy plugin enable reva.animequote --section center
 omarchy plugin disable reva.animequote
 ```
 
-## macOS menu bar version
+## macOS installation guide
 
-A SwiftBar plugin is included at `macos/swiftbar/animequote.10m.py`. It shows
-the character and quote of the day, offers a random quote and a return-to-today
-action, can send a notification on request, and links to the character
-portrait. The date-seeded quote cycle is the same as the Omarchy widget. It
-reads the existing `quotes.json` and `images/` files and works offline.
+The macOS version is a separate SwiftBar menu bar plugin at
+`macos/swiftbar/animequote.10m.py`. It shows the date-seeded quote and
+character, can choose a random quote or return to today's quote, can send a
+notification on request, and links to the character portrait. It reuses
+`quotes.json` and `images/` and works offline.
 
-Install [SwiftBar](https://swiftbar.app/), select a plugin folder in its setup,
-and make sure Python 3 is available. From this repository's root, add the
-plugin to SwiftBar's default `~/.swiftbar` folder:
+### Requirements
+
+- macOS 12 or newer.
+- [SwiftBar](https://swiftbar.app/) and Python 3.
+- GitHub CLI (`gh`) access to clone this private repository. If you do not
+  have Homebrew, install it from [brew.sh](https://brew.sh/).
+
+### Install
+
+Install the apps and sign in to GitHub if needed:
 
 ```sh
-mkdir -p ~/.swiftbar
-chmod +x macos/swiftbar/animequote.10m.py
-ln -s "$(pwd)/macos/swiftbar/animequote.10m.py" ~/.swiftbar/animequote.10m.py
+brew install --cask swiftbar
+brew install python gh
+gh auth login
 ```
 
-If you selected a different SwiftBar plugin folder, use that path instead of
-`~/.swiftbar`. SwiftBar refreshes every 10 minutes and when its menu opens.
+Clone the repo and add its plugin to a dedicated SwiftBar folder:
+
+```sh
+mkdir -p ~/Projects ~/swiftbar-plugins
+gh repo clone revanthkakarla26/anime-quote-of-the-day ~/Projects/anime-quote-of-the-day
+chmod +x ~/Projects/anime-quote-of-the-day/macos/swiftbar/animequote.10m.py
+ln -s ~/Projects/anime-quote-of-the-day/macos/swiftbar/animequote.10m.py ~/swiftbar-plugins/
+```
+
+On first launch, set `~/swiftbar-plugins` as SwiftBar's plugin folder. If
+SwiftBar is already running, choose that folder in its settings, then refresh
+the plugins. The menu refreshes every 10 minutes and when opened.
+
+### Use and update
+
+Click the quote in the menu bar to see today's quote. Choose **Random quote**
+to display another, **Today's quote** to return to the daily selection, or
+**Notify today's quote** to send a macOS notification. **View character
+portrait** opens the local image. To update, pull the repo; the symlink keeps
+SwiftBar connected to the updated script and data.
+
+### Uninstall
+
+Remove the SwiftBar link and, if desired, the cloned repo:
+
+```sh
+rm ~/swiftbar-plugins/animequote.10m.py
+rm -rf ~/Projects/anime-quote-of-the-day
+```
+
+The Omarchy plugin remains documented and installed separately above.
 
 ## Configure
 

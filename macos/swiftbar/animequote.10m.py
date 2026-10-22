@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# <swiftbar.refreshOnOpen>true</swiftbar.refreshOnOpen>
 """Anime Quote of the Day menu bar plugin for SwiftBar."""
 
 from __future__ import annotations
