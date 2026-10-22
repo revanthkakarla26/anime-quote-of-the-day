@@ -29,6 +29,27 @@ omarchy plugin enable reva.animequote --section center
 omarchy plugin disable reva.animequote
 ```
 
+## macOS menu bar version
+
+A SwiftBar plugin is included at `macos/swiftbar/animequote.10m.py`. It shows
+the character and quote of the day, offers a random quote and a return-to-today
+action, can send a notification on request, and links to the character
+portrait. The date-seeded quote cycle is the same as the Omarchy widget. It
+reads the existing `quotes.json` and `images/` files and works offline.
+
+Install [SwiftBar](https://swiftbar.app/), select a plugin folder in its setup,
+and make sure Python 3 is available. From this repository's root, add the
+plugin to SwiftBar's default `~/.swiftbar` folder:
+
+```sh
+mkdir -p ~/.swiftbar
+chmod +x macos/swiftbar/animequote.10m.py
+ln -s "$(pwd)/macos/swiftbar/animequote.10m.py" ~/.swiftbar/animequote.10m.py
+```
+
+If you selected a different SwiftBar plugin folder, use that path instead of
+`~/.swiftbar`. SwiftBar refreshes every 10 minutes and when its menu opens.
+
 ## Configure
 
 Set options on the plugin's entry in `~/.config/omarchy/shell.json`, or use
@@ -93,6 +114,7 @@ folder or publishing a public copy of this repository.
 - `images/` — cached character portraits.
 - `fetch-images.py` — helper for retrieving missing portraits from AniList.
 - `manifest.json` — Omarchy plugin metadata and settings schema.
+- `macos/swiftbar/` — SwiftBar menu bar version for macOS.
 
 ## Development
 
